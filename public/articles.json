@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "title": "Открытие нового учебного корпуса",
+        "author": "Иванов И.И.",
+        "date": "2026-04-15",
+        "preview_image": "/images/1-preview.jpg",
+        "full_image": "/images/1-full.jpg",
+        "summary": "В Московском Политехе открылся новый учебный корпус, оснащённый современными лабораториями."
+    },
+    {
+        "id": 2,
+        "title": "Запуск студенческого спутника",
+        "author": "Петров П.П.",
+        "date": "2026-04-12",
+        "preview_image": "/images/2-preview.jpg",
+        "full_image": "/images/2-full.jpg",
+        "summary": "Команда студентов университета успешно запустила малый научный спутник на низкую орбиту."
+    },
+    {
+        "id": 3,
+        "title": "Хакатон по веб-разработке",
+        "author": "Сидоров С.С.",
+        "date": "2026-04-10",
+        "preview_image": "/images/3-preview.jpg",
+        "full_image": "/images/3-full.jpg",
+        "summary": "48 часов, 120 участников, 30 команд — большой хакатон по Laravel и Vue завершился."
+    },
+    {
+        "id": 4,
+        "title": "Лекция по фреймворку Laravel",
+        "author": "Кузнецов К.К.",
+        "date": "2026-04-08",
+        "preview_image": "/images/4-preview.jpg",
+        "full_image": "/images/4-full.jpg",
+        "summary": "Приглашённый эксперт рассказал о новых возможностях Laravel 11 и планах Laravel 12."
+    },
+    {
+        "id": 5,
+        "title": "Весенняя научная конференция",
+        "author": "Морозова М.М.",
+        "date": "2026-04-05",
+        "preview_image": "/images/5-preview.jpg",
+        "full_image": "/images/5-full.jpg",
+        "summary": "Студенты представили 64 доклада по направлениям IT, электроника и материаловедение."
+    }
+]
