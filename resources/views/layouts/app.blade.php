@@ -33,6 +33,8 @@
         .signin-form input { width: 100%; padding: 8px 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; }
         .btn-primary { background: #2c3e50; color: #fff; border: none; padding: 10px 18px; font-size: 14px; border-radius: 4px; cursor: pointer; }
         .btn-primary:hover { background: #34495e; }
+        .form-errors { background: #ffeaea; border: 1px solid #e57373; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; color: #b71c1c; }
+        .form-errors ul { margin-top: 8px; padding-left: 20px; }
         footer { background: #34495e; color: #bdc3c7; padding: 16px 0; text-align: center; font-size: 14px; }
     </style>
 </head>

@@ -7,7 +7,18 @@
         <h1>Регистрация</h1>
         <p>Заполните форму, чтобы зарегистрироваться на сайте.</p>
 
-        <form action="{{ route('signin.store') }}" method="POST" class="signin-form">
+        @if ($errors->any())
+            <div class="form-errors">
+                <strong>Проверьте заполнение формы:</strong>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('signin.store') }}" method="POST" class="signin-form" novalidate>
             @csrf
 
             <div class="form-row">
