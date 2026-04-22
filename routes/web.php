@@ -9,3 +9,14 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/contacts', function () {
+    $contacts = [
+        ['label' => 'Адрес',   'value' => 'г. Москва, ул. Большая Семёновская, д. 38'],
+        ['label' => 'Телефон', 'value' => '+7 (495) 223-05-23'],
+        ['label' => 'E-mail',  'value' => 'info@news-laravel.local'],
+        ['label' => 'Часы работы', 'value' => 'Пн-Пт: 9:00–18:00'],
+    ];
+
+    return view('contacts', ['contacts' => $contacts]);
+})->name('contacts');
