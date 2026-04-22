@@ -19,7 +19,11 @@
             <tbody>
                 @foreach ($articles as $article)
                     <tr>
-                        <td><img src="{{ $article['preview_image'] }}" alt="preview" class="news-preview"></td>
+                        <td>
+                            <a href="{{ route('galery', $article['id']) }}">
+                                <img src="{{ $article['preview_image'] }}" alt="preview" class="news-preview">
+                            </a>
+                        </td>
                         <td>
                             <strong>{{ $article['title'] }}</strong>
                             <div class="news-summary">{{ $article['summary'] }}</div>
