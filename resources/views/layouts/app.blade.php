@@ -21,6 +21,13 @@
         .contacts-list { list-style: none; }
         .contacts-list li { padding: 8px 0; border-bottom: 1px solid #eee; }
         .contacts-list li:last-child { border-bottom: none; }
+        .news-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .news-table th, .news-table td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; vertical-align: top; }
+        .news-table th { background: #ecf0f1; font-weight: bold; }
+        .news-preview { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; display: block; }
+        .news-preview:hover { opacity: 0.85; }
+        .news-summary { color: #666; font-size: 14px; margin-top: 6px; }
+        .news-full { width: 100%; max-width: 900px; height: auto; border-radius: 6px; }
         footer { background: #34495e; color: #bdc3c7; padding: 16px 0; text-align: center; font-size: 14px; }
     </style>
 </head>
