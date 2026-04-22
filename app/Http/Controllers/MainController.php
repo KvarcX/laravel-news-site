@@ -6,5 +6,11 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    //
+    public function index()
+    {
+        $json = file_get_contents(public_path('articles.json'));
+        $articles = json_decode($json, true);
+
+        return view('home', ['articles' => $articles]);
+    }
 }
