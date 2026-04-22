@@ -28,6 +28,11 @@
         .news-preview:hover { opacity: 0.85; }
         .news-summary { color: #666; font-size: 14px; margin-top: 6px; }
         .news-full { width: 100%; max-width: 900px; height: auto; border-radius: 6px; }
+        .signin-form .form-row { margin-bottom: 14px; }
+        .signin-form label { display: block; margin-bottom: 4px; font-weight: bold; }
+        .signin-form input { width: 100%; padding: 8px 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn-primary { background: #2c3e50; color: #fff; border: none; padding: 10px 18px; font-size: 14px; border-radius: 4px; cursor: pointer; }
+        .btn-primary:hover { background: #34495e; }
         footer { background: #34495e; color: #bdc3c7; padding: 16px 0; text-align: center; font-size: 14px; }
     </style>
 </head>
