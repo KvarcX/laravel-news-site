@@ -4,6 +4,7 @@ use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/galery/{id}', [MainController::class, 'galery'])->name('galery');
 
 Route::get('/about', function () {
     return view('about');
