@@ -35,6 +35,13 @@
         .btn-primary:hover { background: #34495e; }
         .form-errors { background: #ffeaea; border: 1px solid #e57373; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; color: #b71c1c; }
         .form-errors ul { margin-top: 8px; padding-left: 20px; }
+        .articles-list { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+        .article-card { background: #fff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.1); display: flex; overflow: hidden; }
+        .article-card__img { width: 200px; height: 140px; object-fit: cover; flex-shrink: 0; }
+        .article-card__body { padding: 16px 20px; }
+        .article-card__title { font-size: 18px; margin-bottom: 4px; }
+        .article-card__meta { color: #888; font-size: 13px; margin-bottom: 8px; }
+        .article-card__excerpt { color: #444; font-size: 14px; }
         footer { background: #34495e; color: #bdc3c7; padding: 16px 0; text-align: center; font-size: 14px; }
     </style>
 </head>
@@ -45,6 +52,7 @@
             <nav>
                 <ul>
                     <li><a href="{{ route('home') }}">Главная</a></li>
+                    <li><a href="{{ route('articles.index') }}">Новости</a></li>
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contacts') }}">Контакты</a></li>
                 </ul>

@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/galery/{id}', [MainController::class, 'galery'])->name('galery');
+
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
 Route::get('/about', function () {
     return view('about');
