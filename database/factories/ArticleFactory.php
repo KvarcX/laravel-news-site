@@ -49,7 +49,13 @@ class ArticleFactory extends Factory
         ];
 
         $title = $this->faker->randomElement($topics);
-        $covers = ['images/news1.jpg', 'images/news2.jpg', 'images/news3.jpg'];
+        $covers = [
+            'images/1-preview.jpg',
+            'images/2-preview.jpg',
+            'images/3-preview.jpg',
+            'images/4-preview.jpg',
+            'images/5-preview.jpg',
+        ];
 
         return [
             'title'   => $title,
