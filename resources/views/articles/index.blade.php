@@ -40,7 +40,27 @@
         @endforeach
     </div>
 
-    <div class="pagination">
-        {{ $articles->links() }}
-    </div>
+    @if ($articles->hasPages())
+        <nav class="pagination">
+            @if ($articles->onFirstPage())
+                <span class="disabled">← Назад</span>
+            @else
+                <a href="{{ $articles->previousPageUrl() }}">← Назад</a>
+            @endif
+
+            @for ($page = 1; $page <= $articles->lastPage(); $page++)
+                @if ($page === $articles->currentPage())
+                    <span class="active">{{ $page }}</span>
+                @else
+                    <a href="{{ $articles->url($page) }}">{{ $page }}</a>
+                @endif
+            @endfor
+
+            @if ($articles->hasMorePages())
+                <a href="{{ $articles->nextPageUrl() }}">Вперёд →</a>
+            @else
+                <span class="disabled">Вперёд →</span>
+            @endif
+        </nav>
+    @endif
 @endsection
