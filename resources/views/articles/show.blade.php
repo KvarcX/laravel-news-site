@@ -22,14 +22,16 @@
 
         <div class="article-card__actions">
             <a href="{{ route('articles.index') }}">← Назад к списку</a>
-            @auth
+            @can('update', $article)
                 <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
+            @endcan
+            @can('delete', $article)
                 <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-form" onsubmit="return confirm('Удалить новость?');">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="link-danger">Удалить</button>
                 </form>
-            @endauth
+            @endcan
         </div>
     </article>
 @endsection

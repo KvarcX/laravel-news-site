@@ -5,9 +5,9 @@
 @section('content')
     <div class="articles-header">
         <h1>Все новости</h1>
-        @auth
+        @can('create', App\Models\Article::class)
             <a href="{{ route('articles.create') }}" class="btn-primary">+ Добавить новость</a>
-        @endauth
+        @endcan
     </div>
 
     @if (session('status'))
@@ -30,14 +30,16 @@
                     <p class="article-card__excerpt">{{ $article->excerpt }}</p>
                     <div class="article-card__actions">
                         <a href="{{ route('articles.show', $article) }}">Читать</a>
-                        @auth
+                        @can('update', $article)
                             <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
+                        @endcan
+                        @can('delete', $article)
                             <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-form" onsubmit="return confirm('Удалить новость?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="link-danger">Удалить</button>
                             </form>
-                        @endauth
+                        @endcan
                     </div>
                 </div>
             </article>

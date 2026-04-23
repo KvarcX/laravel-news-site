@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,9 +15,21 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $moderator = Role::create(['name' => Role::MODERATOR, 'title' => 'Модератор']);
+        $reader    = Role::create(['name' => Role::READER,    'title' => 'Читатель']);
+
+        User::create([
+            'name'     => 'Модератор Иванов',
+            'email'    => 'moderator@example.com',
+            'password' => Hash::make('password'),
+            'role_id'  => $moderator->id,
+        ]);
+
+        User::create([
+            'name'     => 'Читатель Петров',
+            'email'    => 'reader@example.com',
+            'password' => Hash::make('password'),
+            'role_id'  => $reader->id,
         ]);
 
         Article::factory()->count(30)->create();

@@ -50,6 +50,9 @@
         .link-danger { background: none; border: none; color: #c0392b; cursor: pointer; padding: 0; font-size: 14px; font-family: inherit; }
         .link-danger:hover { text-decoration: underline; }
         .user-name { color: #f1c40f; font-weight: bold; }
+        .role-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; font-weight: normal; vertical-align: middle; }
+        .role-moderator { background: #27ae60; color: #fff; }
+        .role-reader { background: #7f8c8d; color: #fff; }
         .nav-button { background: none; border: none; color: #fff; cursor: pointer; font-size: 16px; font-family: inherit; padding: 0; }
         .nav-button:hover { color: #f1c40f; }
         .inline-label { display: flex; align-items: center; gap: 8px; font-weight: normal; }
@@ -79,7 +82,7 @@
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contacts') }}">Контакты</a></li>
                     @auth
-                        <li class="user-name">{{ auth()->user()->name }}</li>
+                        <li class="user-name">{{ auth()->user()->name }}@if (auth()->user()->role) <span class="role-badge role-{{ auth()->user()->role->name }}">{{ auth()->user()->role->title }}</span>@endif</li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}" class="inline-form">
                                 @csrf

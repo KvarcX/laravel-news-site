@@ -23,11 +23,15 @@ class ArticleController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Article::class);
+
         return view('articles.create');
     }
 
     public function store(StoreArticleRequest $request)
     {
+        $this->authorize('create', Article::class);
+
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']) . '-' . time();
 
@@ -40,11 +44,15 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
+        $this->authorize('update', $article);
+
         return view('articles.edit', ['article' => $article]);
     }
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        $this->authorize('update', $article);
+
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']) . '-' . $article->id;
 
@@ -57,6 +65,8 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
+        $this->authorize('delete', $article);
+
         $article->delete();
 
         return redirect()
