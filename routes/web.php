@@ -43,3 +43,8 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+// Предпросмотр письма в браузере (удобно при разработке шаблона)
+Route::get('/mail-preview/{article}', function (App\Models\Article $article) {
+    return new App\Mail\NewArticleNotification($article);
+})->name('mail.preview');
