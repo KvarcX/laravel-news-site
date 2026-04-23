@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Mail\NewArticleNotification;
 use App\Models\Article;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
@@ -37,9 +41,17 @@ class ArticleController extends Controller
 
         $article = Article::create($data);
 
+        $moderators = User::whereHas('role', function ($q) {
+            $q->where('name', Role::MODERATOR);
+        })->pluck('email');
+
+        if ($moderators->isNotEmpty()) {
+            Mail::to($moderators->all())->send(new NewArticleNotification($article));
+        }
+
         return redirect()
             ->route('articles.show', $article)
-            ->with('status', 'Новость создана');
+            ->with('status', 'Новость создана и рассылка отправлена');
     }
 
     public function edit(Article $article)
