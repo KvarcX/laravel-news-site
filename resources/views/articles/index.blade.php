@@ -5,7 +5,9 @@
 @section('content')
     <div class="articles-header">
         <h1>Все новости</h1>
-        <a href="{{ route('articles.create') }}" class="btn-primary">+ Добавить новость</a>
+        @auth
+            <a href="{{ route('articles.create') }}" class="btn-primary">+ Добавить новость</a>
+        @endauth
     </div>
 
     @if (session('status'))
@@ -28,12 +30,14 @@
                     <p class="article-card__excerpt">{{ $article->excerpt }}</p>
                     <div class="article-card__actions">
                         <a href="{{ route('articles.show', $article) }}">Читать</a>
-                        <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
-                        <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-form" onsubmit="return confirm('Удалить новость?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="link-danger">Удалить</button>
-                        </form>
+                        @auth
+                            <a href="{{ route('articles.edit', $article) }}">Редактировать</a>
+                            <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-form" onsubmit="return confirm('Удалить новость?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="link-danger">Удалить</button>
+                            </form>
+                        @endauth
                     </div>
                 </div>
             </article>

@@ -49,6 +49,11 @@
         .inline-form { display: inline; margin: 0; }
         .link-danger { background: none; border: none; color: #c0392b; cursor: pointer; padding: 0; font-size: 14px; font-family: inherit; }
         .link-danger:hover { text-decoration: underline; }
+        .user-name { color: #f1c40f; font-weight: bold; }
+        .nav-button { background: none; border: none; color: #fff; cursor: pointer; font-size: 16px; font-family: inherit; padding: 0; }
+        .nav-button:hover { color: #f1c40f; }
+        .inline-label { display: flex; align-items: center; gap: 8px; font-weight: normal; }
+        .inline-label input { width: auto; }
         .flash-success { background: #e8f5e9; border: 1px solid #81c784; color: #2e7d32; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; }
         .pagination { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
         .pagination a, .pagination span { padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; text-decoration: none; color: #2c3e50; background: #fff; font-size: 14px; }
@@ -73,6 +78,18 @@
                     <li><a href="{{ route('articles.index') }}">Новости</a></li>
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contacts') }}">Контакты</a></li>
+                    @auth
+                        <li class="user-name">{{ auth()->user()->name }}</li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" class="inline-form">
+                                @csrf
+                                <button type="submit" class="nav-button">Выйти</button>
+                            </form>
+                        </li>
+                    @else
+                        <li><a href="{{ route('login') }}">Войти</a></li>
+                        <li><a href="{{ route('signin') }}">Регистрация</a></li>
+                    @endauth
                 </ul>
             </nav>
         </div>
