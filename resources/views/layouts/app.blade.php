@@ -41,7 +41,25 @@
         .article-card__body { padding: 16px 20px; }
         .article-card__title { font-size: 18px; margin-bottom: 4px; }
         .article-card__meta { color: #888; font-size: 13px; margin-bottom: 8px; }
-        .article-card__excerpt { color: #444; font-size: 14px; }
+        .article-card__excerpt { color: #444; font-size: 14px; margin-bottom: 10px; }
+        .article-card__actions { display: flex; gap: 14px; align-items: center; font-size: 14px; }
+        .article-card__actions a { color: #2c3e50; text-decoration: none; }
+        .article-card__actions a:hover { text-decoration: underline; }
+        .articles-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .inline-form { display: inline; margin: 0; }
+        .link-danger { background: none; border: none; color: #c0392b; cursor: pointer; padding: 0; font-size: 14px; font-family: inherit; }
+        .link-danger:hover { text-decoration: underline; }
+        .flash-success { background: #e8f5e9; border: 1px solid #81c784; color: #2e7d32; padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; }
+        .pagination { margin-top: 20px; }
+        .pagination nav { display: flex; gap: 4px; }
+        .pagination a, .pagination span { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; text-decoration: none; color: #2c3e50; background: #fff; font-size: 13px; }
+        .pagination a:hover { background: #ecf0f1; }
+        .pagination .active span, .pagination [aria-current=page] span { background: #2c3e50; color: #fff; border-color: #2c3e50; }
+        .article-full { background: #fff; padding: 24px 28px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+        .article-full__img { width: 100%; max-height: 360px; object-fit: cover; border-radius: 6px; margin-bottom: 16px; }
+        .article-full__excerpt { color: #555; margin: 10px 0 16px; }
+        .article-full__body p { margin-bottom: 12px; }
+        textarea { width: 100%; padding: 8px 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
         footer { background: #34495e; color: #bdc3c7; padding: 16px 0; text-align: center; font-size: 14px; }
     </style>
 </head>

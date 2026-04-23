@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/galery/{id}', [MainController::class, 'galery'])->name('galery');
 
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::resource('articles', ArticleController::class);
 
 Route::get('/about', function () {
     return view('about');
