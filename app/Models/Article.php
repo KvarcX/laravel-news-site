@@ -17,4 +17,14 @@ class Article extends Model
         'excerpt',
         'body',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->latest();
+    }
+
+    public function approvedComments()
+    {
+        return $this->hasMany(Comment::class)->approved()->latest();
+    }
 }

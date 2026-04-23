@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -32,6 +33,34 @@ class DatabaseSeeder extends Seeder
             'role_id'  => $reader->id,
         ]);
 
-        Article::factory()->count(30)->create();
+        $articles = Article::factory()->count(30)->create();
+
+        $readerId = User::where('email', 'reader@example.com')->value('id');
+        $modId    = User::where('email', 'moderator@example.com')->value('id');
+
+        $bodies = [
+            'Интересная новость, спасибо!',
+            'Хороший материал, добавьте ещё подробностей.',
+            'Не согласен с выводами, но за статью спасибо.',
+            'Очень полезно, жду продолжения.',
+            'А можно ссылку на источник?',
+            'Слишком коротко, хотелось бы больше деталей.',
+        ];
+
+        foreach ($articles->random(6) as $i => $article) {
+            Comment::create([
+                'article_id'  => $article->id,
+                'user_id'     => $readerId,
+                'body'        => $bodies[$i],
+                'is_approved' => $i < 2,
+            ]);
+        }
+
+        Comment::create([
+            'article_id'  => $articles->first()->id,
+            'user_id'     => $modId,
+            'body'        => 'Комментарий от имени модератора — виден сразу.',
+            'is_approved' => true,
+        ]);
     }
 }

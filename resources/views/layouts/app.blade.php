@@ -53,6 +53,31 @@
         .role-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; font-weight: normal; vertical-align: middle; }
         .role-moderator { background: #27ae60; color: #fff; }
         .role-reader { background: #7f8c8d; color: #fff; }
+        .moderation-link { position: relative; }
+        .badge-pending { background: #e74c3c; color: #fff; border-radius: 10px; padding: 2px 7px; font-size: 11px; margin-left: 4px; font-weight: bold; vertical-align: middle; }
+        .comments { margin-top: 30px; }
+        .comments h2 { margin-bottom: 12px; }
+        .comments__empty { color: #888; font-style: italic; margin: 12px 0; }
+        .comment { background: #fff; padding: 14px 18px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 10px; }
+        .comment__meta { display: flex; gap: 12px; align-items: baseline; color: #666; font-size: 13px; margin-bottom: 6px; }
+        .comment__meta strong { color: #2c3e50; font-size: 14px; }
+        .comment__body { color: #333; line-height: 1.5; margin-bottom: 6px; }
+        .comment-form { background: #fff; padding: 18px 22px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-top: 16px; }
+        .comment-form h3 { margin-bottom: 6px; }
+        .comment-form__note { color: #888; font-size: 13px; margin-bottom: 10px; }
+        .comment-form textarea { margin-bottom: 12px; }
+        .moderation-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+        .moderation-item { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 14px 18px; }
+        .moderation-item__head { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; margin-bottom: 8px; font-size: 14px; flex-wrap: wrap; }
+        .moderation-item__meta { color: #888; font-size: 13px; margin-left: 8px; }
+        .moderation-item__article { color: #2c3e50; font-size: 13px; text-decoration: none; }
+        .moderation-item__article:hover { text-decoration: underline; }
+        .moderation-item__body { color: #333; margin: 8px 0 12px; line-height: 1.5; }
+        .moderation-item__actions { display: flex; gap: 10px; }
+        .btn-approve { background: #27ae60; color: #fff; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .btn-approve:hover { background: #229954; }
+        .btn-reject { background: #fff; color: #c0392b; border: 1px solid #e57373; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .btn-reject:hover { background: #ffeaea; }
         .nav-button { background: none; border: none; color: #fff; cursor: pointer; font-size: 16px; font-family: inherit; padding: 0; }
         .nav-button:hover { color: #f1c40f; }
         .inline-label { display: flex; align-items: center; gap: 8px; font-weight: normal; }
@@ -82,6 +107,17 @@
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contacts') }}">Контакты</a></li>
                     @auth
+                        @if (auth()->user()->isModerator())
+                            @php $pendingCount = \App\Models\Comment::pending()->count(); @endphp
+                            <li>
+                                <a href="{{ route('moderation.comments') }}" class="moderation-link">
+                                    Модерация
+                                    @if ($pendingCount > 0)
+                                        <span class="badge-pending">{{ $pendingCount }}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
                         <li class="user-name">{{ auth()->user()->name }}@if (auth()->user()->role) <span class="role-badge role-{{ auth()->user()->role->name }}">{{ auth()->user()->role->title }}</span>@endif</li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}" class="inline-form">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+    Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+    Route::get('/moderation/comments', [CommentController::class, 'moderation'])->name('moderation.comments');
+    Route::patch('/moderation/comments/{comment}/approve', [CommentController::class, 'approve'])->name('moderation.comments.approve');
+    Route::delete('/moderation/comments/{comment}/reject', [CommentController::class, 'reject'])->name('moderation.comments.reject');
 });
 
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
